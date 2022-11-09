@@ -78,6 +78,7 @@ public class NewJFrame extends javax.swing.JFrame {
             String sor;
             RandomAccessFile raf = new RandomAccessFile("szavazatok.txt","r");
             sor= raf.readLine();
+            sor=raf.readLine();
                 while(sor!=null){
                     lista.add(new kons(sor.split(" ")));
                     sor=raf.readLine();
