@@ -2,6 +2,7 @@
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -20,7 +21,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
-        
+       
         
    }  
 
@@ -95,12 +96,45 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+        Tablatolt(jTable1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public static void Tablatolt(JTable JTable1) {
+        String sor;
+            ArrayList<kons> szavazatok = new ArrayList<>();
+            try {
+                RandomAccessFile raf = new RandomAccessFile("szavazatok.txt", "rw");
+                sor = raf.readLine();
+               while(sor!=null){
+                    szavazatok.add(new kons(sor.split(" ")));
+                    sor=raf.readLine();
+                }
+                raf.close();
+            } catch (Exception e) {
+                System.err.println("Hiba");
+            }
+            try {
+ 
+                String[] rekord = new String[5];
+                for(int i=0;i<szavazatok.size();i++){
+                DefaultTableModel model = (DefaultTableModel) JTable1.getModel();
+                rekord[0]= String.valueOf(szavazatok.get(i).getKer());
+                rekord[1]= String.valueOf(szavazatok.get(i).getSzav());
+                rekord[2]= String.valueOf(szavazatok.get(i).getKnev());
+                rekord[3]= String.valueOf(szavazatok.get(i).getNev());
+                rekord[4]= String.valueOf(szavazatok.get(i).getPart());
+                model.addRow(rekord);}
+ 
+                }
+            catch (Exception e) {
+                        System.out.println(e);
+                    }
+    }
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
