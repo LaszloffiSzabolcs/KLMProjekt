@@ -96,6 +96,31 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static boolean kuszob (int szavazat){
+        boolean kusz;
+        
+        if(szavazat>100){
+        kusz = true;
+        } else{
+        kusz = false;
+        }
+
+        return kusz;
+    }
+    /*public static int fuggetlen(){
+        int fuggdb = 0;
+        int i;
+        for(i = 0, i <, i++){
+            if(){
+                fuggdb ++;
+            }
+    }
+    
+    
+    return fuggdb;
+    }*/
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
